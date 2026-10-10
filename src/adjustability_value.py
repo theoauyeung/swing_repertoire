@@ -44,8 +44,8 @@ DATA = ROOT / "data"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "uncommited"))
 
-import db                                                            # noqa: E402
-import pitch_controls as pc                                          # noqa: E402
+import db                                                            # noqa: E402  # type: ignore
+import pitch_controls as pc                                          # noqa: E402  # type: ignore
 import xRV_model as xrv                                              # noqa: E402
 from adjustability import KEY, MIN_SWINGS, SEASONS                   # noqa: E402
 from adjustability import add_context, location_design               # noqa: E402
