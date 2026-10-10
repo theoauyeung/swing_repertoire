@@ -1,9 +1,5 @@
 """Standalone swing-card and usage-heatmap generator.
 
-Usage:
-    python src/uncommited/swing_cards.py             # swing cards for Arraez + Judge
-    python src/uncommited/swing_cards.py --heatmap   # usage heatmaps for Arraez + Judge
-    python src/uncommited/swing_cards.py "Name"      # swing card for one hitter
 """
 import sys
 from pathlib import Path
