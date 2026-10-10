@@ -157,3 +157,6 @@ experiments/best_params.*.json
 
 # Local-only scripts: data pulls, DB access, presentation helpers
 src/uncommited/
+
+# Paper drafts — never commit
+*.pdf
