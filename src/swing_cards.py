@@ -197,9 +197,12 @@ def swing_cards(name, save=None):
 
     fig = plt.figure(figsize=(fig_w, fig_h), facecolor=BG)
     fig.patch.set_facecolor(BG)
-    fig.text(0.5, 1 - 0.2 / fig_h,
-             f"{full}   ·   Bats {stand}   ·   {k} swing shapes",
+    fig.text(0.5, 1 - 0.12 / fig_h,
+             f"{full}   ·   Bats {stand}",
              ha='center', va='top', fontsize=13, fontweight='bold', color=INK)
+    fig.text(0.5, 1 - 0.32 / fig_h,
+             f"Individual Repertoire   ·   {k} swing shapes",
+             ha='center', va='top', fontsize=9, color=MUT)
 
     for h, half_g in enumerate(halves):
         nh = len(half_g)
