@@ -12,6 +12,11 @@ from matplotlib.patches import FancyArrowPatch, Wedge, Circle
 from matplotlib.colors import LinearSegmentedColormap
 import dataframe_image as dfi
 
+plt.rcParams.update({
+    'font.family':     'Arial',
+    'font.sans-serif': ['Arial', 'DejaVu Sans'],
+})
+
 ROOT  = next(p for p in [Path(__file__).parents[2], Path.cwd(), Path.cwd().parent]
              if (p / 'data').exists())
 DATA  = ROOT / 'data'
@@ -237,7 +242,7 @@ def swing_cards(name, save=None):
                 fn(ax, r)
 
     if save:
-        fig.savefig(save, dpi=130, facecolor=BG, bbox_inches='tight')
+        fig.savefig(save, dpi=200, facecolor=BG, bbox_inches='tight')
         print(f'wrote {save}')
     return fig
 
