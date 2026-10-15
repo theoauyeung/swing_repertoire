@@ -245,7 +245,7 @@ def swing_cards(name, save=None):
                 fn(ax, r)
 
     if save:
-        fig.savefig(save, dpi=200, facecolor=BG, bbox_inches='tight')
+        fig.savefig(save, dpi=300, facecolor=BG, bbox_inches='tight')
         print(f'wrote {save}')
     return fig
 
