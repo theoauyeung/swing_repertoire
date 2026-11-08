@@ -72,7 +72,7 @@ def _p_aa(ax, r):
     ax.add_patch(FancyArrowPatch((-0.85, 0), (-0.85 + 1.9*np.cos(a), 1.9*np.sin(a)),
                  arrowstyle='-|>', mutation_scale=17, color=RED, lw=3, zorder=4))
     ax.text(0.5, 0.94, f"{r.vaa:.0f}°", transform=ax.transAxes, ha='center', va='top',
-            color=RED, fontsize=15, fontweight='bold')
+            color=RED, fontsize=17, fontweight='bold')
 
 
 def _p_dir(ax, r):
@@ -85,14 +85,14 @@ def _p_dir(ax, r):
     ax.add_patch(FancyArrowPatch((0, -0.25), (-np.sin(ang)*1.05, -0.25 + np.cos(ang)*1.05),
                  arrowstyle='-|>', mutation_scale=16, color=RED, lw=3, zorder=4))
     pull_x, oppo_x = ((-1.12, 0.72) if s > 0 else (0.72, -1.12))
-    ax.text(pull_x, 0.55, 'PULL', color=LIME, fontsize=7.5, fontweight='bold')
-    ax.text(oppo_x, 0.55, 'OPPO', color=MUT,  fontsize=7.5, fontweight='bold')
+    ax.text(pull_x, 0.55, 'Pull', color=LIME, fontsize=9, fontweight='bold')
+    ax.text(oppo_x, 0.55, 'Oppo', color=MUT,  fontsize=9, fontweight='bold')
     hand_lbl = 'LHH' if getattr(r, 'stand', 'R') == 'L' else 'RHH'
-    ax.text(0.97, 0.97, hand_lbl, transform=ax.transAxes, ha='right', va='top',
-            color=MUT, fontsize=6.5, style='italic')
-    ax.text(0.5, 1.02, f"{abs(r.haa):.0f}° {'PULL' if r.haa >= 0 else 'OPPO'}",
+    ax.text(0.97, 0.03, hand_lbl, transform=ax.transAxes, ha='right', va='bottom',
+            color=MUT, fontsize=8, style='italic')
+    ax.text(0.5, 1.02, f"{abs(r.haa):.0f}° {'Pull' if r.haa >= 0 else 'Oppo'}",
             transform=ax.transAxes, ha='center', va='top',
-            color=LIME, fontsize=13, fontweight='bold')
+            color=LIME, fontsize=15, fontweight='bold')
 
 
 def _p_tilt(ax, r):
@@ -102,10 +102,10 @@ def _p_tilt(ax, r):
     ax.plot([0, 2.0], [0, 0], color=INK, ls=(0, (4, 3)), lw=1.3, alpha=.8)
     ax.plot([0, 2.0*np.cos(np.radians(t))], [0, -2.0*np.sin(np.radians(t))],
             color=LIME, lw=3.2, solid_capstyle='round')
-    ax.text(1.75, 0.12, 'FLAT', color=MUT, fontsize=7)
-    ax.text(1.55, -1.35, 'STEEP', color=MUT, fontsize=7)
+    ax.text(1.75, 0.12, 'Flat', color=MUT, fontsize=8.5)
+    ax.text(1.55, -1.35, 'Steep', color=MUT, fontsize=8.5)
     ax.text(0.5, 0.98, f"{r.tilt:.0f}°", transform=ax.transAxes, ha='center', va='top',
-            color=ORNG, fontsize=15, fontweight='bold')
+            color=ORNG, fontsize=17, fontweight='bold')
 
 
 def _p_speed(ax, r):
@@ -116,9 +116,9 @@ def _p_speed(ax, r):
     ax.barh(0.45, dev, height=0.32, left=0, color=col, align='center', linewidth=0, zorder=3)
     ax.axvline(0, color=INK, lw=1.8, ls=(0, (2, 2)), zorder=4)
     ax.text(0.5, 0.96, f"{r.speed:.0f} mph", transform=ax.transAxes, ha='center', va='top',
-            color=INK, fontsize=14, fontweight='bold')
-    ax.text(0.5, 0.06, f"{dev:+.0f} vs. avg", transform=ax.transAxes, ha='center', va='bottom',
-            color=col, fontsize=8, fontweight='bold')
+            color=INK, fontsize=16, fontweight='bold')
+    ax.text(0.5, 0.06, f"{dev:+.0f} vs. Avg", transform=ax.transAxes, ha='center', va='bottom',
+            color=col, fontsize=10, fontweight='bold')
 
 
 def _p_length(ax, r):
@@ -129,9 +129,9 @@ def _p_length(ax, r):
     ax.barh(0.45, dev, height=0.32, left=0, color=col, align='center', linewidth=0, zorder=3)
     ax.axvline(0, color=INK, lw=1.8, ls=(0, (2, 2)), zorder=4)
     ax.text(0.5, 0.96, f"{r.length:.2f} ft", transform=ax.transAxes, ha='center', va='top',
-            color=INK, fontsize=14, fontweight='bold')
-    ax.text(0.5, 0.06, f"{dev:+.2f} vs. avg", transform=ax.transAxes, ha='center', va='bottom',
-            color=col, fontsize=8, fontweight='bold')
+            color=INK, fontsize=16, fontweight='bold')
+    ax.text(0.5, 0.06, f"{dev:+.2f} vs. Avg", transform=ax.transAxes, ha='center', va='bottom',
+            color=col, fontsize=10, fontweight='bold')
 
 
 # Column definitions: (header, renderer, subtitle)
@@ -147,17 +147,17 @@ _NC      = 5
 
 def _cols():
     return [
-        ('ATTACK\nANGLE',     _p_aa,
+        ('Attack\nAngle',     _p_aa,
          f"MLB {_league['vert_attack_angle']:.0f}°"),
-        ('ATTACK\nDIRECTION', _p_dir,
+        ('Attack\nDirection', _p_dir,
          f"MLB {abs(_league['horz_attack_angle_pull']):.0f}° "
-         f"{'PULL' if _league['horz_attack_angle_pull'] >= 0 else 'OPPO'}"),
-        ('SWING\nTILT',       _p_tilt,
+         f"{'Pull' if _league['horz_attack_angle_pull'] >= 0 else 'Oppo'}"),
+        ('Swing\nTilt',       _p_tilt,
          f"MLB {_league['swing_path_tilt']:.0f}°"),
-        ('BAT\nSPEED',        _p_speed,
-         f"MLB avg {_league['bat_speed']:.0f} mph"),
-        ('SWING\nLENGTH',     _p_length,
-         f"MLB avg {_league['swing_length']:.2f} ft"),
+        ('Bat\nSpeed',        _p_speed,
+         f"MLB Avg {_league['bat_speed']:.0f} mph"),
+        ('Swing\nLength',     _p_length,
+         f"MLB Avg {_league['swing_length']:.2f} ft"),
     ]
 
 
@@ -183,26 +183,22 @@ def swing_cards(name, save=None):
     g = g.sort_values('weight', ascending=False).reset_index(drop=True)
     k = len(g)
 
-    cols4      = _cols()
-    n_halves   = 2 if k > 3 else 1
-    n_per_half = (k + 1) // 2 if n_halves == 2 else k
-    halves = ([g.iloc[:n_per_half].reset_index(drop=True),
-               g.iloc[n_per_half:].reset_index(drop=True)]
-              if n_halves == 2 else [g.reset_index(drop=True)])
+    cols4  = _cols()
+    halves = [g.reset_index(drop=True)]
 
     half_w = _LABEL_W + _NC * _CELL_W
-    fig_w  = half_w * n_halves + _GAP_W * (n_halves - 1)
-    n_rows = n_per_half
+    fig_w  = half_w
+    n_rows = k
     fig_h  = _TOP_H + _HDR_H + n_rows * _CELL_H + _BOT_H
 
     fig = plt.figure(figsize=(fig_w, fig_h), facecolor=BG)
     fig.patch.set_facecolor(BG)
     fig.text(0.5, 1 - 0.12 / fig_h,
              f"{full}   ·   Bats {stand}",
-             ha='center', va='top', fontsize=13, fontweight='bold', color=INK)
+             ha='center', va='top', fontsize=15, fontweight='bold', color=INK)
     fig.text(0.5, 1 - 0.32 / fig_h,
-             f"Individual Repertoire   ·   {k} swing shapes",
-             ha='center', va='top', fontsize=9, color=MUT)
+             f"Individual Repertoire   ·   {k} Swing Shapes",
+             ha='center', va='top', fontsize=11, color=MUT)
 
     for h, half_g in enumerate(halves):
         nh = len(half_g)
@@ -215,18 +211,18 @@ def swing_cards(name, save=None):
         gs = gridspec.GridSpec(nh, _NC, figure=fig,
                                left=gs_left, right=gs_right,
                                top=gs_top, bottom=gs_bot,
-                               wspace=0.06, hspace=0.45)
+                               wspace=0.06, hspace=0.15)
 
         cell_w_fig = (gs_right - gs_left) / _NC
         for c, (title, fn, avg) in enumerate(cols4):
             cx = gs_left + (c + 0.5) * cell_w_fig
             fig.text(cx, 1 - (_TOP_H + _HDR_H * 0.35) / fig_h,
                      title.replace('\n', ' '),
-                     ha='center', va='center', fontsize=8,
+                     ha='center', va='center', fontsize=10,
                      fontweight='bold', color='#333333')
             if avg:
                 fig.text(cx, 1 - (_TOP_H + _HDR_H * 0.82) / fig_h,
-                         avg, ha='center', va='center', fontsize=6.5, color=MUT)
+                         avg, ha='center', va='center', fontsize=8, color=MUT)
 
         row_h_fig = (gs_top - gs_bot) / nh
         label_cx  = (x0_in + _LABEL_W * 0.5) / fig_w
@@ -234,12 +230,12 @@ def swing_cards(name, save=None):
         for row_i, (_, r) in enumerate(half_g.iterrows()):
             row_cy = gs_top - (row_i + 0.5) * row_h_fig
             fig.text(label_cx, row_cy + 0.016,
-                     f"shape {int(r.cluster)}",
-                     ha='center', va='bottom', fontsize=9,
+                     f"Shape {int(r.cluster)}",
+                     ha='center', va='bottom', fontsize=11,
                      fontweight='bold', color=INK)
             fig.text(label_cx, row_cy - 0.016,
                      f"{r.weight * 100:.0f}%",
-                     ha='center', va='top', fontsize=8.5, color=MUT)
+                     ha='center', va='top', fontsize=10, color=MUT)
             for c, (title, fn, avg) in enumerate(cols4):
                 ax = fig.add_subplot(gs[row_i, c])
                 fn(ax, r)
