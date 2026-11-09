@@ -137,6 +137,7 @@ dmypy.json
 # .config**
 
 # Project data extracts — never commit (contains player data)
+data
 data/
 data.nosync/
 # retired approaches — kept on disk for reference, never shipped
