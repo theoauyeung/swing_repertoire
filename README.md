@@ -7,7 +7,7 @@ Two questions:
 1. **Swing-shape value.** What is the run value of each hitter's distinct swing shapes, given the pitch he's facing?
 2. **Adjustment value.** Does moving the swing around with the situation pay — and for the hitters it doesn't pay for, what should they do instead?
 
-Data: Driveline `mlb_db`. Methodology: `docs/research-design.md` and `docs/adjustability-methodology.md` (not in this repo).
+Data: Driveline `mlb_db`. Methodology: `docs/research-design.md`.
 
 ## What's built
 
@@ -104,7 +104,3 @@ R 4.6.0 at `/usr/local/bin/Rscript` with arrow, dplyr, gt, gtExtras, mlbplotR, s
 ## New machine
 
 See [`docs/project_resume.md`](docs/project_resume.md).
-
-## Contributors
-
-[@theoauyeung](https://github.com/theoauyeung)
